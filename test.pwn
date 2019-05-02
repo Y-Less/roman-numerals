@@ -2,6 +2,8 @@
 
 #include "roman-numerals.inc"
 
-main() {
+main()
+{
 	// write tests for libraries here and run "sampctl package run"
 }
+
