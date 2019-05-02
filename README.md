@@ -49,6 +49,23 @@ in this section. If your library is passive and has no API, simply omit this
 section.
 -->
 
+```pawn
+#include <roman-numerals>
+#include <a_samp>
+
+#undef MAX_PLAYERS
+#define MAX_PLAYERS (CC)
+
+main()
+{
+	// There's no Roman numeral for zero.
+	for (new i = 0; i != XCIV; ++i)
+	{
+		printf("i + CIII = %d", i + CIII);
+	}
+}
+```
+
 ## Testing
 
 <!--

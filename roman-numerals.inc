@@ -3,6 +3,11 @@
 #endif
 #define _INC_roman_numerals
 
+// YSI compatibility.
+#if defined C
+	#undef C
+#endif
+
 #define I            (1)
 #define II           (2)
 #define III          (3)

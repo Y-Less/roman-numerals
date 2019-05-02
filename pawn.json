@@ -2,5 +2,15 @@
 	"user": "Y-Less",
 	"repo": "roman-numerals",
 	"entry": "test.pwn",
-	"output": "test.amx"
+	"output": "test.amx",
+	"dev_dependencies": [
+		"pawn-lang/YSI-Includes@5.x"
+	],
+	"runtime": {
+		"version": "0.3.7",
+		"mode": "server",
+		"echo": "-",
+		"rcon_password": "password",
+		"port": 7777
+	}
 }
