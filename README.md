@@ -76,7 +76,7 @@ Prefixed mode requires `0r` in front of the numbers, but improves compatibility:
 #include <a_samp>
 
 #undef MAX_PLAYERS
-#define MAX_PLAYERS (CC)
+#define MAX_PLAYERS (0rCC)
 
 main()
 {
