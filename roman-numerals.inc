@@ -8,6 +8,8 @@
 	#undef C
 #endif
 
+#define nulla        (0)
+
 #define I            (1)
 #define II           (2)
 #define III          (3)

@@ -58,8 +58,8 @@ section.
 
 main()
 {
-	// There's no Roman numeral for zero.
-	for (new i = 0; i != XCIV; ++i)
+	// There's no Roman numeral for zero, use `nulla` instead.
+	for (new i = nulla; i != XCIV; ++i)
 	{
 		printf("i + CIII = %d", i + CIII);
 	}
@@ -78,3 +78,4 @@ To test, simply run the package:
 ```bash
 sampctl package run
 ```
+

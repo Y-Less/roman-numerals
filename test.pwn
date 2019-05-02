@@ -8,5 +8,6 @@ TEST__ RomanNumerals()
 {
 	new i = XVI;
 	ASSERT_EQ(i + CCC, CCCXVI);
+	ASSERT_EQ(i + nulla, i);
 }
 
