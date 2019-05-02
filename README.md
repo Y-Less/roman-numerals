@@ -49,6 +49,8 @@ in this section. If your library is passive and has no API, simply omit this
 section.
 -->
 
+There are two ways to use this include - prefixed and unprefixed (default):
+
 ```pawn
 #include <roman-numerals>
 #include <a_samp>
@@ -58,13 +60,34 @@ section.
 
 main()
 {
-	// There's no Roman numeral for zero, use `nulla` instead.
 	for (new i = nulla; i != XCIV; ++i)
 	{
 		printf("i + CIII = %d", i + CIII);
 	}
 }
 ```
+
+Prefixed mode requires `0r` in front of the numbers, but improves compatibility:
+
+```pawn
+#define ROMAN_PREFIX
+
+#include <roman-numerals>
+#include <a_samp>
+
+#undef MAX_PLAYERS
+#define MAX_PLAYERS (CC)
+
+main()
+{
+	for (new i = 0rN; i != 0rXCIV; ++i)
+	{
+		printf("i + 0rCIII = %d", i + 0rCIII);
+	}
+}
+```
+
+Note that there's no Roman numeral for zero, use `nulla` or `0rN` instead.
 
 ## Testing
 

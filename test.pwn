@@ -1,3 +1,4 @@
+#define ROMAN_PREFIX
 #define RUN_TESTS
 
 #include <YSI_Core\y_testing>
@@ -6,8 +7,8 @@
 
 TEST__ RomanNumerals()
 {
-	new i = XVI;
-	ASSERT_EQ(i + CCC, CCCXVI);
-	ASSERT_EQ(i + nulla, i);
+	new i = 0rXVI;
+	ASSERT_EQ(i + 0rCCC, 0rCCCXVI);
+	ASSERT_EQ(i + 0rN, i);
 }
 
