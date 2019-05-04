@@ -3,6 +3,10 @@
 #endif
 #define _INC_roman_numerals
 
+#if !defined ROMAN_LITERALS
+	#endinput
+#endif
+
 #if defined ROMAN_PREFIX
 	#define nulla 0
 	#define rN x0 // 0

@@ -1,3 +1,4 @@
+#define ROMAN_LITERALS
 #define ROMAN_PREFIX
 #define RUN_TESTS
 

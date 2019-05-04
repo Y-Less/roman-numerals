@@ -52,6 +52,8 @@ section.
 There are two ways to use this include - prefixed and unprefixed (default):
 
 ```pawn
+#define ROMAN_LITERALS
+
 #include <roman-numerals>
 #include <a_samp>
 
@@ -71,6 +73,7 @@ Prefixed mode requires `0r` in front of the numbers, but improves compatibility:
 
 ```pawn
 #define ROMAN_PREFIX
+#define ROMAN_LITERALS
 
 #include <roman-numerals>
 #include <a_samp>
@@ -87,7 +90,7 @@ main()
 }
 ```
 
-Note that there's no Roman numeral for zero, use `nulla` or `0rN` instead.
+Note that there's no Roman numeral for zero, use `nulla` or `0rN` instead.  `ROMAN_LITERALS` includes the defines to make the numbers work (since there are several thousand of them).  Without this you can't use the literals.
 
 ## Numbers
 
