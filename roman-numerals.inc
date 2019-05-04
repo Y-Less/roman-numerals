@@ -3,6 +3,236 @@
 #endif
 #define _INC_roman_numerals
 
+stock bool:ToRomanNumeral(n, out[], size = sizeof (out), bool:subtractive = true)
+{
+	static Ms[] = "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM";
+	out[0] = '\0';
+	if (-31000 <= n <= 31000)
+	{
+		if (n == 0)
+		{
+			strcat(out, "nulla", size);
+			return true;
+		}
+		if (n < 0)
+		{
+			strcat(out, "-", size);
+			n = -n;
+		}
+		// Append all the required `M`s at once.
+		strcat(out, Ms[31 - n / 1000], size);
+		// Now do the rest.
+		n %= 1000;
+		if (subtractive)
+		{
+			switch (n / 100)
+			{
+			case 1:
+				strcat(out, "C", size);
+			case 2:
+				strcat(out, "CC", size);
+			case 3:
+				strcat(out, "CCC", size);
+			case 4:
+				strcat(out, "CD", size);
+			case 5:
+				strcat(out, "D", size);
+			case 6:
+				strcat(out, "DC", size);
+			case 7:
+				strcat(out, "DCC", size);
+			case 8:
+				strcat(out, "DCCC", size);
+			case 9:
+				strcat(out, "CM", size);
+			}
+			n %= 100;
+			switch (n / 10)
+			{
+			case 1:
+				strcat(out, "X", size);
+			case 2:
+				strcat(out, "XX", size);
+			case 3:
+				strcat(out, "XXX", size);
+			case 4:
+				strcat(out, "XL", size);
+			case 5:
+				strcat(out, "L", size);
+			case 6:
+				strcat(out, "LX", size);
+			case 7:
+				strcat(out, "LXX", size);
+			case 8:
+				strcat(out, "LXXX", size);
+			case 9:
+				strcat(out, "XC", size);
+			}
+			n %= 10;
+			switch (n)
+			{
+			case 1:
+				strcat(out, "I", size);
+			case 2:
+				strcat(out, "II", size);
+			case 3:
+				strcat(out, "III", size);
+			case 4:
+				strcat(out, "IV", size);
+			case 5:
+				strcat(out, "V", size);
+			case 6:
+				strcat(out, "VI", size);
+			case 7:
+				strcat(out, "VII", size);
+			case 8:
+				strcat(out, "VIII", size);
+			case 9:
+				strcat(out, "IX", size);
+			}
+		}
+		else
+		{
+			switch (n / 100)
+			{
+			case 1:
+				strcat(out, "C", size);
+			case 2:
+				strcat(out, "CC", size);
+			case 3:
+				strcat(out, "CCC", size);
+			case 4:
+				strcat(out, "CCCC", size);
+			case 5:
+				strcat(out, "D", size);
+			case 6:
+				strcat(out, "DC", size);
+			case 7:
+				strcat(out, "DCC", size);
+			case 8:
+				strcat(out, "DCCC", size);
+			case 9:
+				strcat(out, "DCCCC", size);
+			}
+			n %= 100;
+			switch (n / 10)
+			{
+			case 1:
+				strcat(out, "X", size);
+			case 2:
+				strcat(out, "XX", size);
+			case 3:
+				strcat(out, "XXX", size);
+			case 4:
+				strcat(out, "XXXX", size);
+			case 5:
+				strcat(out, "L", size);
+			case 6:
+				strcat(out, "LX", size);
+			case 7:
+				strcat(out, "LXX", size);
+			case 8:
+				strcat(out, "LXXX", size);
+			case 9:
+				strcat(out, "LXXXX", size);
+			}
+			n %= 10;
+			switch (n)
+			{
+			case 1:
+				strcat(out, "I", size);
+			case 2:
+				strcat(out, "II", size);
+			case 3:
+				strcat(out, "III", size);
+			case 4:
+				strcat(out, "IIII", size);
+			case 5:
+				strcat(out, "V", size);
+			case 6:
+				strcat(out, "VI", size);
+			case 7:
+				strcat(out, "VII", size);
+			case 8:
+				strcat(out, "VIII", size);
+			case 9:
+				strcat(out, "VIIII", size);
+			}
+		}
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+stock FromRomanNumeral(const n[])
+{
+	new
+		num,
+		i;
+	for ( ; ; )
+	{
+		switch (n[i++])
+		{
+		case 'I':
+			switch (n[i++])
+			{
+			case 'V':
+				num += 4;
+			case 'X':
+				num += 9;
+			case 'L':
+				num += 49;
+			case 'C':
+				num += 99;
+			case 'D':
+				num += 499;
+			case 'M':
+				num += 999;
+			default:
+				num += 1, --i;
+			}
+		case 'V':
+			num += 5;
+		case 'X':
+			switch (n[i++])
+			{
+			case 'L':
+				num += 40;
+			case 'C':
+				num += 90;
+			case 'D':
+				num += 490;
+			case 'M':
+				num += 990;
+			default:
+				num += 10, --i;
+			}
+		case 'L':
+			num += 50;
+		case 'C':
+			switch (n[i++])
+			{
+			case 'D':
+				num += 400;
+			case 'M':
+				num += 900;
+			default:
+				num += 100, --i;
+			}
+		case 'D':
+			num += 500;
+		case 'M':
+			num += 1000;
+		default:
+			break;
+		}
+	}
+	return num;
+}
+
 #if !defined ROMAN_LITERALS
 	#endinput
 #endif

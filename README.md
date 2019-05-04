@@ -90,7 +90,27 @@ main()
 }
 ```
 
-Note that there's no Roman numeral for zero, use `nulla` or `0rN` instead.  `ROMAN_LITERALS` includes the defines to make the numbers work (since there are several thousand of them).  Without this you can't use the literals.
+Note that there's no Roman numeral for zero, use `nulla` or `0rN` instead.  `ROMAN_LITERALS` includes the defines to make the numbers work (since there are several thousand of them).  Without this you can't use the literals, but can still use the two functions for converting to and from strings:
+
+```pawn
+// Remove this for much faster compiling.
+//#define ROMAN_LITERALS
+
+#include <a_samp>
+#include "roman-numerals.inc"
+
+main()
+{
+	printf("%d", FromRomanNumeral("MCCVIIII"))
+	new str[32];
+
+	ToRomanNumeral(54, str, .subtractive = false);
+	printf(str); // LIIII
+
+	ToRomanNumeral(54, str, .subtractive = true);
+	printf(str); // LIV
+}
+```
 
 ## Numbers
 
