@@ -95,13 +95,15 @@ Contrary to popular belief, there is no fixed standard on how to write certain n
 
 ```
 CCCCXXXXVIIII
-CCCCXXXXIX
 CCCCXLVIIII
-CCCCXLIX
 CDXXXXVIIII
-CDXXXXIX
-CDXLVIII
+CCCCXXXXIX
 CDXLVIIII
+CDXXXXIX
+CCCCXLIX
+CDXLVIII
+CCCCIL
+CDIL
 ```
 
 It is only `4` and `9` that has this ambiguity.  This library handles them all.
