@@ -129,7 +129,9 @@ CCCCIL
 CDIL
 ```
 
-It is only `4` and `9` that has this ambiguity.  This library handles them all.
+Normally it is only `4` and `9` that has this ambiguity, so this library handles every variant of those.  There is some evidence that any number can use this scheme, so `8` could be `IIX`, but these extra extended numbers are not yet handled.  Unsurprisingly, Tom Scott has a relevant video:
+
+https://www.youtube.com/watch?v=jMxoGqsmk5Y
 
 There is also no standard for numbers over 3000, since there is no symbol for 5000.  Two methods are to simply use more `M`s, or to add a bar over numbers indicating `* 1000`.  This library uses the former, up to pawn symbol limits (31 characters).  Thus the largest possible number you can represent without modifying the compiler is in unprefixed mode and is `31000` (`MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM`).
 
